@@ -14,4 +14,4 @@ Saranno mergiati alla fine.
 - [x] Deadlock -> Fabio
 - [x] Memoria -> Fabio
 - [ ] Paginazione
-- [ ] Memoria Virtuale
+- [ ] Memoria Virtuale -> Edu
