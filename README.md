@@ -15,7 +15,7 @@ Saranno mergiati alla fine.
 - [x] Memoria -> Fabio
 - [ ] Paginazione
 - [ ] Memoria Virtuale -> Edu
-- [ ] Memoria Secondaria
+- [x] Memoria Secondaria -> Rick
 - [ ] File system
 - [ ] Protezione
 - [ ] I/O
