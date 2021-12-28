@@ -9,8 +9,8 @@ Saranno mergiati alla fine.
 - [ ] Introduzione
 - [ ] Processi -> Edmi
 - [ ] Thread -> Fede
-- [ ] Semafori -> Fra Mazzucco
-- [ ] Problemi di Sincronizzazione
+- [x] Semafori -> Fra Mazzucco
+- [x] Problemi di Sincronizzazione
 - [x] Deadlock -> Fabio
 - [x] Memoria -> Fabio
 - [ ] Paginazione
