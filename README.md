@@ -14,7 +14,7 @@ Saranno mergiati alla fine.
 - [x] Deadlock -> Fabio
 - [x] Memoria -> Fabio
 - [x] Paginazione -> Ale Ghione
-- [ ] Memoria Virtuale -> Edu
+- [x] Memoria Virtuale -> Edu
 - [x] Memoria Secondaria -> Rick
 - [ ] File system
 - [ ] Protezione
