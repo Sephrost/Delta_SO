@@ -13,28 +13,28 @@ Si verifica il DeadLock se:
 	- Se detengono il possesso di alcune risorse e ne attendono altre
 - É presente un'**attesa circolare**
 	- Un processo attende una risorsa, occupata da un'altro che attende un'altra risorsa, e cosí via
-- Non c'é **prelazione**(il SO non puo' sottrarre risorse per riassegnarle)
+- Non c'è **prelazione** (il SO non puo' sottrarre risorse per riassegnarle)
 
 Basta che **una** delle **condizioni** sopra citate non si verifichí per **evitare** il deadlock.
 
 ## Grafi di assegnazione delle risorse
 Per rappresentare piú precisamente il deadlock utilizziamo i **grafi di assegnazione delle risorse**.
 
-Sono grafi della forma $G=<V,E>$, dove :
-- $V$ é l'insieme dei **vertici**. A sua volta é partizionato in 2 tipi di nodi:
-	- $P=\{P_1,P_2,...,P_n\}$ é l'insieme dei processi attivi
-	- $R=\{R_1,R_2,...,R_m\}$ é l'insieme dei tipi di risorse presenti nel sistema
-- $E$ é l'insieme degli archi:
-	- un'arco da un processo ad una risorsa($P_i\to R_j$) indica una richiesta di una risorsa di tipo $R_j$ da parte del processo $P_i$ ed é definito **arco di richiesta**
-	- un'arco da una richiesta ad una risorsa($R_i\to P_j$) indica l'assegnazione di una risorsa di tipo $R_i$ al processo $P_j$ ed é definito **arco di assegnazione**
+Sono grafi della forma ![LaTex](img/Deadlock/2f08d7e5d413cc99de1613845777542a.png), dove :
+- ![latex](img/Deadlock/7675142119512da9636f6be90ff7f20c.png) é l'insieme dei **vertici**. A sua volta é partizionato in 2 tipi di nodi:
+	- ![latex](img/Deadlock/5a248f83182dd80ffc31f2eefc640189.png) é l'insieme dei processi attivi
+	- ![latex](img/Deadlock/5f136ae1fb043790bc2ef8193327710a.png) é l'insieme dei tipi di risorse presenti nel sistema
+- ![latex](img/Deadlock/da6e647dfe0b7eef8c5254d75c0649b0.png) é l'insieme degli archi:
+	- un'arco da un processo ad una risorsa ![latex](img/Deadlock/5f7de65443809ae220ec54686c6e8b3d.png) indica una richiesta di una risorsa di tipo ![latex](img/Deadlock/e9948a1dc9db20e516166adec892a0d9.png) da parte del processo ![latex](img/Deadlock/0ed9da7b1b81775a1bc234b3e049c72b.png) ed é definito **arco di richiesta**
+	- un'arco da una richiesta ad una risorsa ![latex](img/Deadlock/0966f50bfad1dbe18d66bcace313a398.png) indica l'assegnazione di una risorsa di tipo ![latex](img/Deadlock/7ba7be33bc95fc1029fd7dfd1907ed88.png) al processo ![latex](img/Deadlock/a3f12745dcb969317ccd7c3a010d7285.png) ed é definito **arco di assegnazione**
 
 Un gradi di assegnazione puó essere composto nella seguente maniera:	
--	$P=\{P_1,P_2,P_3,P_4\}$
--	$R=\{R_1,R_2\}$
--	$E=\{P_1\to R_1,R_1\to P_2,P_2\to R_2,R_2\to P_3,R_2\to P_4\}$
+-	![latex](img/Deadlock/bc0ab71d26fcf7ce2279adffead7b12c.png)
+-	![latex](img/Deadlock/0ad79b9f0428d46c123185a133bc1d5c.png)
+-	![latex](img/Deadlock/9af04674ed575105419575a2bdf93438.png)
 e rappresentato nella seguente:
 
-![[Pasted image 20211108165721.png]]
+![grafo di assegnazione](img/Deadlock/Pasted%20image%2020211108165721.png)
 
 ### Utilizzo dei grafi per la localizzazione del deadlock
 Possiamo definire delle regole generali per l'individuazione del deadlock a partire dai grafi:
@@ -45,14 +45,14 @@ Possiamo definire delle regole generali per l'individuazione del deadlock a part
 
 ## Gestione del Deadlock
 Dando per scontato che é importante individuare il deadlock se non abbiamo modi di evitare che si verifichi a priori, generalmente lo si puó gestire in **3 maniere**:
-- Si puó introdurre un **protocollo** per** prevenire** o **evitare** il deadlock
+- Si puó introdurre un **protocollo** per **prevenire** o **evitare** il deadlock
 	- Bisogna definire opportuni protocolli di assegnazione delle risorse
 - Possiamo permettere al sistema di entrare in uno stato di deadlock, **individuarlo** e **risolverlo**
 	- Richiede la capacitá di monitorare le richieste e l'assegnazione delle risorse
 - Possiamo **ignorare il problema** e pretendere che non avvenga mai nel sistema
 	- É la tecnica piú utilizzata, poiché non richiede risorse o pilitiche particolari 
 
-Per assicurarci che il deadlock non si verifichi mai possiamo usare 2 strategie:** Deadlock Avoidance** strategies o **Deadlock Prevention** strategies.
+Per assicurarci che il deadlock non si verifichi mai possiamo usare 2 strategie: **Deadlock Avoidance** strategies o **Deadlock Prevention** strategies.
 
 ### Deadlock Prevention
 Affiché il deadlock si verifichi é necessario che ognuna delle 4 condizioni sopra citate si verifichino. 
@@ -95,7 +95,7 @@ Lo stato di allocazione delle risorse é definito a partire dal numero di risors
 #### Stato sicuro
 Il sistema si trova in uno stato sicuro se il sistema puó allocare risorse per ogni processo grantendo la loro esecuzione in un tempo finito senza causare deadlock.
 
-Piú precisamente, uno stato $S$ e' sicuro se esiste una **sequenza sicura** che diparte da esso.
+Piú precisamente, uno stato ![latex](img/Deadlock/ea35226ba9e35114dcdd8b4a1d2b0c31.png) e' sicuro se esiste una **sequenza sicura** che diparte da esso.
 
 #### Sequenza sicura
 Una sequenza si definisce sicura quando per ogni processo appartenente alla sequenza, le richieste del processo possono essere **soddisfatte** utilizzando le **risorse** che sono **libere**  piu' tutte quelle **liberate** da tutti i **processi precedenti**.
@@ -105,7 +105,7 @@ Finché il sistema di processi che condividono risorse rimane in uno stato sicur
 #### Algoritmo di Deadlock avoidance con un'istanza per risorsa
 Per introdurre questo algoritmo introduciamo prima un'altro tipo di grafo
 ##### Archi di reclamo 
-Un'arco di reclamo $P_i\to R_j$ indica che il processo $P_i$ potrebbe chiedere la risorsa $R_j$ in futuro.
+Un'arco di reclamo ![latex](img/Deadlock/5f7de65443809ae220ec54686c6e8b3d.png) indica che il processo ![latex](img/Deadlock/0ed9da7b1b81775a1bc234b3e049c72b.png) potrebbe chiedere la risorsa ![latex](img/Deadlock/7ba7be33bc95fc1029fd7dfd1907ed88.png) in futuro.
 
 Graficamente viene rappresentata con una **freccia tratteggiata**. 
 
@@ -115,7 +115,7 @@ All'inizio tutti i processi inseriscono nel grafo di assegnazione un claim edge 
 
 Sará possibile poi trasformare gli archi di reclamo in archi di richieste soltanto se viene a generarsi un ciclo costituito da qualunque tipo di archi.
 
-![[Pasted image 20211110181752.png]]
+![archi di reclamo](img/Deadlock/Pasted%20image%2020211110181752.png)
 
 #### Algoritmo del banchiere
 L'algoritmo descritto al punto precedente non é valido se sono presenti istanze multiple di ogni risorsa. Per questo usiamo un'algoritmo piú generale chiamato **Algoritmo del banchiere**.
@@ -154,7 +154,7 @@ if(per ogni i∈[1,N], Fine[i]==true){
 	stato=sicuro
 }
 ```
-L'algoritmo ha complessitá $m\times n^2$
+L'algoritmo ha complessitá ![latex](img/Deadlock/0f06f5828faf8f9a19754dc60c1887b1.png)
 
 ##### Algoritmo di allocazione delle risorse
 ```text
