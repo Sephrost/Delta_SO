@@ -178,11 +178,12 @@ Se nasce un nuovo processo si riesegue l'assegnazione per ridistribuire i frame 
 
 - I processi usano insiemi di pagine diversi all'interno della propria esecuzione
 - Il processo esegue senza problemi se gli assegno almeno il numero di pagine attive per ciascun insieme (*working set* [^6])
-- Devo memorizzare le pagine alle quali il processo ha effetuato l'accesso nelle ultime ![delta](img/Memoria%20Virtuale/38f22b6048d6d071ae41034a0dd80eed.png) richieste 
+- Devo memorizzare le pagine alle quali il processo ha effetuato l'accesso nelle ultime ![delta](img/Memoria%20Virtuale/38f22b6048d6d071ae41034a0dd80eed.png)[^7] richieste 
 - L'OS deve "indovinare" il momento in cui il processo cmabia working set
 - Se la **PAGE FAULT FEQUENCY** cresce si aumenta il numero di frame assegnati dall'OS
 
 ![latex](img/Memoria%20Virtuale/77d808888f8dbe78bfa8d903e5eb161f.png) : cardinalità del WF di un processo
+
 ![latex](img/Memoria%20Virtuale/45c68238848d8ca49bf28625340bbe48.png)[^8] : numero complessivo di frame necessari per tutti i processi
 
 ### Prepaginazione - *swapping*
