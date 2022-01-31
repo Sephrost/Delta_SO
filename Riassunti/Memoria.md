@@ -13,7 +13,7 @@ Solitamente, il binding delle istruzioni e degli indirizzi di memoria avviene du
 - **Execution Time**
 	- Se il processo puó essere **spostato** durante la sua esecuzione, gli indirizzi del modulo eseguibile devono rimanere **rilocabili** fino all'esecuzione stessa
 
-![[Pasted image 20211115123337.png]]
+![binding](img/Memoria/Pasted%20image%2020211115123337.png)
 
 ### Indirizzi fisici, logici e virtuali
 
@@ -23,11 +23,11 @@ Il binding a che avviene a Compile-time e Load-time genera indirzzi fisici e log
 
 #### Memory-Management unit
 
-La gestione del collegamento tra indirizzi virtuali e fisici é a carico di un dispositivo hardware chiamato **memory-management unit**(**MMU**)
+La gestione del collegamento tra indirizzi virtuali e fisici é a carico di un dispositivo hardware chiamato **memory-management unit **(**MMU**)
 
 Possiamo scegliere diversi modi per mappare questi collegamenti, un'implementazione di questo consiste nel usare un **registro di riallocazione**, precedentemente chiamato **registro base**, dove era contenuto il piú **piccolo indirizzo fisico utilizzabile** dai processi, e aggiungere il valore contenuto in questo ad ogni registro generato dai processi utente.
 
-![[Pasted image 20211115150857.png]]
+![MMU](img/Memoria/Pasted%20image%2020211115150857.png)
 
 Cosí facendo il processo utente non conoscerá mai l'indirizzo fisico reale, poiché avrá a che fare solo con gli indirizzi logici.
 
@@ -56,7 +56,7 @@ La memoria é solitamente divisa in 2 partizioni:
 
 Poiché il vettore di interruzione dele partizioni é solitamente locato nella porzione bassa della memoria, si posiziona il sistema nella medesima porzione.
 
-![[Pasted image 20211115161859.png]]
+![Allocazione Contigua](img/Memoria/Pasted%20image%2020211115161859.png)
 
 Possiamo inoltre implementare meccanismi di protezione e mappatura della memoria allocata utilizzando un registro di riallocazione un registro di limite, limitando l'area di memoria disponibile ai processi utente e allocando dinamicamente gli indirizzi logici.
 
@@ -114,7 +114,7 @@ Questo avviene quando non cé abbastanza posto sulla RAM per caricare un process
 
 Il **backing store** deve inoltre essere abbastanza ampia da contenere le copie di tutte le immagini di memoria di tutti i processi utenti.
 
-![[Pasted image 20211119154047.png]]
+![swapping](img/Memoria/Pasted%20image%2020211119154047.png)
 
 Lo swapping é composto da **2 fasi**:
 - Una fase di **swap in**, dove si carica l'immagine del processo dalla memoria secondaria alla principale.

@@ -49,9 +49,9 @@ Quando la richiesta di una pagina porta a page fault [^1]:
       2. Copio la pagina che ha causato page fault nello stesso frame
    
 Gestione del page fault:
-1. Gestione dell'interruzione $\simeq 10^-6$ secondi
-2. Lettura della pagina mancante $\simeq 10^-3$ secondi
-3. Riavvio del processo $\simeq 10^-6$ secondi
+1. Gestione dell'interruzione ![latex](img/Memoria%20Virtuale/fbff9a27208e3eaf04e69ac645a20324.png) secondi
+2. Lettura della pagina mancante ![latex](img/Memoria%20Virtuale/7fb3cd3a99311c9e10aa0ae92a9bfb07.png) secondi
+3. Riavvio del processo ![latex](img/Memoria%20Virtuale/fbff9a27208e3eaf04e69ac645a20324.png) secondi
 
 ---
 ## FIFO - *First In First Out*
@@ -166,8 +166,8 @@ L'OS assegna almeno il numero liberi di frame calcolato sull'architettura per es
 Ogni processo riceve la stessa quantità di frame
 
 ## Allocazione Proporzionale
-- Calcolo [^4] $ V = VM_{1} + VM_{2} + \dots + VM_{i} + VM_{n} $
-- Calcolo [^5] $ m_{i} = \frac{VM_{i}}{V}M $
+- Calcolo [^4]  ![latex](img/Memoria%20Virtuale/b64286ea9125d332be45fdceb8935c50.png)
+- Calcolo [^5]  ![latex](img/Memoria%20Virtuale/c21142cbedb325db4156f928a9019248.png)
 
 Se nasce un nuovo processo si riesegue l'assegnazione per ridistribuire i frame (possibilmente non utlizzati) - *allocazione dinamica*
 
@@ -178,12 +178,12 @@ Se nasce un nuovo processo si riesegue l'assegnazione per ridistribuire i frame 
 
 - I processi usano insiemi di pagine diversi all'interno della propria esecuzione
 - Il processo esegue senza problemi se gli assegno almeno il numero di pagine attive per ciascun insieme (*working set* [^6])
-- Devo memorizzare le pagine alle quali il processo ha effetuato l'accesso nelle ultime $\delta$[^7] richieste 
+- Devo memorizzare le pagine alle quali il processo ha effetuato l'accesso nelle ultime ![delta](img/Memoria%20Virtuale/38f22b6048d6d071ae41034a0dd80eed.png) richieste 
 - L'OS deve "indovinare" il momento in cui il processo cmabia working set
 - Se la **PAGE FAULT FEQUENCY** cresce si aumenta il numero di frame assegnati dall'OS
 
-$ |\omega S_{p}| $ : cardinalità del WF di un processo
-$ \sum_{i} |\omega S_{p_{i}}| $[^8] : numero complessivo di frame necessari per tutti i processi
+![latex](img/Memoria%20Virtuale/77d808888f8dbe78bfa8d903e5eb161f.png) : cardinalità del WF di un processo
+![latex](img/Memoria%20Virtuale/45c68238848d8ca49bf28625340bbe48.png)[^8] : numero complessivo di frame necessari per tutti i processi
 
 ### Prepaginazione - *swapping*
 Quando un proceso viene "swapped-out" dalla memoria RAM, memorizzo il working set del processo in memoria secondaria. Il processo viene "swapped-in" quando le pagine del working set si liberano
@@ -219,5 +219,5 @@ Inizializzo un array uniforme, inizialmente con tutti i segmenti della slab con 
 [^4]: *virtual memory richiesta da ogni processo, sommata, per eseguire*
 [^5]: *per calcolare il numero di frame da assegnare a ciascun processo*
 [^6]: *ricalcolato a intervalli regolari*
-[^7]: *circa $10^4$*
+[^7]: *circa 10^4*
 [^8]: *serve per decidere se è necessario mandare in swap alcuni processi*
