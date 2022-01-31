@@ -12,7 +12,7 @@ Saranno mergiati alla fine.
 - [x] Thread -> Fede
 - [x] Semafori -> Fra Mazzucco
 - [x] Problemi di Sincronizzazione
-- [ ] Scheduling -> Fabio
+- [x] Scheduling -> Fabio
 - [x] Deadlock -> Fabio
 - [x] Memoria -> Fabio
 - [x] Paginazione -> Ale Ghione

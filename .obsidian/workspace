@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Riassunti/Paginazione.md",
+            "file": "README.md",
             "mode": "preview"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Riassunti/Paginazione.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,15 +88,15 @@
   },
   "active": "7f451f56a5f1e599",
   "lastOpenFiles": [
-    "Riassunti/Paginazione.md",
-    "Riassunti/Memorie_Secondarie.md",
-    "Riassunti/Memoria Virtuale.md",
+    "README.md",
+    "Riassunti/Scheduling della CPU.md",
     "Riassunti/Memoria.md",
     "Riassunti/Giga Introduzione.md",
-    "README.md",
-    "Riassunti/Sincronizzazione_dei_processi.md",
+    "Riassunti/Paginazione.md",
     "Riassunti/Processi.md",
-    "Riassunti/DeadLock.md",
-    "Riassunti/Thread.md"
+    "Riassunti/Sincronizzazione_dei_processi.md",
+    "Riassunti/Thread.md",
+    "Riassunti/Memorie_Secondarie.md",
+    "Riassunti/Memoria Virtuale.md"
   ]
 }
