@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "7f451f56a5f1e599",
+        "id": "7015fac5cfc4b8f6",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "README.md",
+            "file": "Riassunti/Sincronizzazione_dei_processi.md",
             "mode": "preview"
           }
         }
@@ -52,7 +52,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 364
+    "width": 204
   },
   "right": {
     "id": "a8a6e2389c27183b",
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "Riassunti/Sincronizzazione_dei_processi.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,17 +86,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "7f451f56a5f1e599",
+  "active": "7015fac5cfc4b8f6",
   "lastOpenFiles": [
-    "README.md",
-    "Riassunti/Scheduling della CPU.md",
-    "Riassunti/Memoria.md",
-    "Riassunti/Giga Introduzione.md",
-    "Riassunti/Paginazione.md",
-    "Riassunti/Processi.md",
     "Riassunti/Sincronizzazione_dei_processi.md",
+    "Riassunti/Scheduling della CPU.md",
+    "Riassunti/Giga Introduzione.md",
+    "Riassunti/DeadLock.md",
+    "README.md",
+    "Riassunti/Memoria.md",
+    "Riassunti/Processi.md",
     "Riassunti/Thread.md",
-    "Riassunti/Memorie_Secondarie.md",
-    "Riassunti/Memoria Virtuale.md"
+    "Riassunti/Paginazione.md",
+    "Riassunti/Memorie_Secondarie.md"
   ]
 }

@@ -12,14 +12,36 @@ potremmo comporre in parallelo f1 ed f2 e poi comporli insieme, avremmo due modi
 
 ## Definizione di thread (filo):
 
+Un thread è l’**unità** di **base** d’**uso** della **CPU**.
+
 Sono delle articolazioni dell'esecuzione all'interno di un processo: elementi eseguibili in parallelo che però eseguono lo stesso P.
-Prendendo n thread che condividono lo stesso processo questi avranno un loro personale pid, un loro personale stack e condivideranno il codice (ovvero le variabili globali utilizzate). Se un thread modifica una di queste variabili globali automaticamente gli altri thread che le condividono se le vedranno modificate 
---> modo per far comunicare i thread tra di loro.
+
+Prendendo $n$ thread che condividono lo stesso processo questi avranno:
+- un loro **identificatore** di thread
+- un loro **stack** 
+- un **program counter** 
+- un insieme di **registri**
+
+e **condivideranno** il **codice**,la sezione dei **dati** e altre **risorse** di sistema, come i file aperti e i segnali. 
+
+## Vantaggi nell'utilizzo
+I vantaggi della programmazione multithread si possono classificare in quattro categorie: 
+- **Tempo di risposta**
+	- può permettere a un programma di continuare la sua esecuzione, anche se una parte di esso è bloccata o sta eseguendo un’operazione particolarmente lunga, riducendo il tempodi risposta all’utente.
+- **Condivisione delle risorse**
+	-  I thread condividono per default la memoria e le risorse del processo al quale appartengono. 
+- **Economia**
+	-  poiché i thread condividono le risorse del processo cui appartengono, è molto più conveniente creare thread e gestirne i cambi di contesto.
+- **Scalabilità**
+	- Il multithreading su una macchina con più processori incrementa il parallelismo
+
+## Thread Utenti e Kernel
+
 Un thread può essere detto **utente** (se esiste soltanto al livello della libreria) oppure **kernel** (se esiste a livello del Sistema Operativo).
 
 utente | kernel
 --|--
-| agisce a livello della libreria / processo| agisce a livello del Sistema Operativo
+| agisce a livello della libreria e/o processo| agisce a livello del Sistema Operativo
 Il Sistema operativo non vede come è strutturato il processo e di conseguenza non vede i thread che esso contiene |il Sistema operativo vede come è strutturato il processo e di conseguenza potrà andare a fare lo scheduling della CPU a livello dei thread
 |si possono usare thread su Sistemi Operativi qualsiasi, persino quelli che non sanno cosa sia un thread  | minore portabilità, perché SO mutlithread diversi implementano i thread in modo diverso |
 | scheduling dei thread più adattibile ad esigenze particolari (maggiore adattibilità)|  |
@@ -28,9 +50,7 @@ Il Sistema operativo non vede come è strutturato il processo e di conseguenza n
 | MA... se uno dei thread esegue un'operazione sospensiva automaticamente tutto il processo si blocca nonostante dei thread potrebbero comunque eseguire | INVECE... non si blocca tutto il processo perché ogni thread ha assegnata la propria CPU |
 | parallelismo non reale perché il SO assegna sempre e comunque una sola CPU | il SO è in grado di assegnare la CPU ai singoli thread del processo e quindi permette il parallelismo | 
 
-
-
-## lo scheduling
+## Scheduling dei thread
 Il SO effettua lo scheduling della CPU utilizzando oggetti che può assegnare al processo in varia maniera.
 Noi sappiamo che il SO effettua lo scheduling della CPU a partire dai PCB (process control block, che contengono le informazioni essenziali per la gestione del processo) oppure a livello dei thread. 
 Per effettuare lo scheduling della CPU a livello dei thread è necessario associare thread utente a thread kernel.

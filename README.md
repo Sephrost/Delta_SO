@@ -18,6 +18,6 @@ Saranno mergiati alla fine.
 - [x] Paginazione -> Ale Ghione
 - [x] Memoria Virtuale -> Edu
 - [x] Memoria Secondaria -> Rick
-- [ ] File system
+- [ ] File system->Dennis
 - [ ] Protezione
 - [ ] I/O
