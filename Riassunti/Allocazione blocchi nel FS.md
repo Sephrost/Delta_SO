@@ -78,3 +78,36 @@ Inoltre bisogna anche aggiungere tra gli attributi del file il numero del primo 
 - La FAT **occupa spazio in RAM**, infatti durante l'uso di essa, sottrae spazio ad altri processi
 - Più aumentano le dimensioni medie degli HD, più l'uso della FAT diventa problematico
 - Bisogna frequentamente salvare la FAT sul HD dal momento che se viene persa non c'è più modo di accedere ai dati dei vari file
+
+#### Allocazione indicizzata
+Nell'allocazione indicizzata, il numero di ogni blocco di cui è composto il file viene scritto in un apposito blocco chiamato **blocco indice**. Notare che dunque bisogna salvare un'informazione aggiuntiva tra gli attributi del file: il **numero del blocco indice**.
+Questo sistema è simile all'utilizzo di una Page Table per quanto riguarda la Memoria Primaria.
+
+##### Pro
+- **Nessuna frammentazione esterna:** non c'è bisogno di blocchi contigui
+- **Accesso diretto efficiente:** una volta portato in RAM il blocco indice, calcolarsi quale blocco contiene quale byte è abbastanza facile
+
+##### Contro
+- Se un file è piccolo, il **blocco indice** risulterà quasi tutto **sprecato**
+
+#### Varianti dell'allocazione indicizzata
+Un blocco indice potrebbe essere non sufficiente per tener traccia di tutti i blocchi di cui è composto il file. 
+Bisogna dunque modificare il tipo di approccio:
+
+1. **Schema concatenato**
+	![](IMG/Indice_Concatenato.png)
+2. **Schema a più livelli**
+	![](IMG/Indice_Livelli.png)
+
+#### i-node Unix
+Un'ulteriore variante dell'allocazione indicizzata è quella usata sui sitemi Unix: ad ogni file viene associato un blocco indice(**i-node** -> index node) che contiene gli **attributi del file** e **l'elenco  dei blocchi di dati del file**.
+Ogni i-node viene gestito direttamente dal SO e salvato in un'area riservata dell'HD.
+Nell'**i-node** vengono inoltre memorizzati:
+- 10 **puntatori diretti** a blocchi di dati del file
+- 1 **puntatore single indirect** che punterà ad un blocco indice che conterrà puntatori a blocchi di dati del file
+- 1 **puntatore double indirect** che punterà ad un blocco indice che conterrà  puntatori a blocchi indice ognuno dei quali conterrà puntatori a blocchi di dati del file
+- 1 **puntatore triple indirect** che punterà ad un blocco indice che conterrà puntatori a blocchi indice ognuno dei quali conterrà puntatori a blocchi indice ognuno dei quali conterrà puntatori a blocchi di dati del file
+
+![](i-node.png)
+
+#### NTFS 
