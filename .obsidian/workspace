@@ -10,7 +10,7 @@
           "type": "markdown",
           "state": {
             "file": "Riassunti/Sincronizzazione_dei_processi.md",
-            "mode": "preview"
+            "mode": "source"
           }
         }
       }
@@ -90,13 +90,13 @@
   "lastOpenFiles": [
     "Riassunti/Sincronizzazione_dei_processi.md",
     "Riassunti/Scheduling della CPU.md",
+    "Riassunti/Memorie_Secondarie.md",
     "Riassunti/Giga Introduzione.md",
-    "Riassunti/DeadLock.md",
-    "README.md",
+    "Riassunti/Memoria Virtuale.md",
     "Riassunti/Memoria.md",
     "Riassunti/Processi.md",
     "Riassunti/Thread.md",
-    "Riassunti/Paginazione.md",
-    "Riassunti/Memorie_Secondarie.md"
+    "Riassunti/DeadLock.md",
+    "README.md"
   ]
 }

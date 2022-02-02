@@ -44,10 +44,10 @@ Un esempio dell'algoritmo utilizzando la soluzione di peterson può essere quest
 while(true){
 	flag[i] = true;
 	turn = j;
-	while (flag[j] && turn == j){
+	while (flag[j] && turn == j);
 	/* sezione critica */
-	flag[i] = flase;
-	}
+	flag[i] = false;
+	
 	/* sezione non critica */
 }
 ```
