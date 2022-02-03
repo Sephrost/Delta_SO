@@ -1,0 +1,102 @@
+{
+  "main": {
+    "id": "10dd4d947fec457e",
+    "type": "split",
+    "children": [
+      {
+        "id": "7015fac5cfc4b8f6",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Riassunti/Sincronizzazione_dei_processi.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2a513ac495baeab2",
+    "type": "split",
+    "children": [
+      {
+        "id": "1f4680e5bce797db",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bc1e27455220eb95",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "ae54a1685966e596",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 204
+  },
+  "right": {
+    "id": "a8a6e2389c27183b",
+    "type": "split",
+    "children": [
+      {
+        "id": "7379e6905db2116b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6710deca458d5f25",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Riassunti/Sincronizzazione_dei_processi.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "7015fac5cfc4b8f6",
+  "lastOpenFiles": [
+    "Riassunti/Sincronizzazione_dei_processi.md",
+    "Riassunti/Scheduling della CPU.md",
+    "Riassunti/Memorie_Secondarie.md",
+    "Riassunti/Giga Introduzione.md",
+    "Riassunti/Memoria Virtuale.md",
+    "Riassunti/Memoria.md",
+    "Riassunti/Processi.md",
+    "Riassunti/Thread.md",
+    "Riassunti/DeadLock.md",
+    "README.md"
+  ]
+}

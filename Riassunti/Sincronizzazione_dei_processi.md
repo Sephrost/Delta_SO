@@ -1,7 +1,9 @@
 # Sincronizzazione dei processi
 
 ## Problema della selezione critica
-Si consideri un sistema composto da $$n$$ processi $$\{ P_0,P_1,...P_{n-1}\}$$. La porzione di codice al loro interno che può modificare variabili comuni è detta **sezione critica**. Quando uno dei processi $$P$$ entra nella sua sezione critica non si consente a nessun'altro processo di entrare nella propria. Dunqua ogni processo deve chiedere il permesso per entrare in questa sezione critica.
+Si consideri un sistema composto da $n$ processi $\{ P_0,P_1,...P_{n-1}\}$. La porzione di **codice** al loro interno che può **modificare variabili comuni** è detta **sezione critica**. Quando uno dei processi $P$ entra nella sua sezione critica non si consente a nessun'altro processo di entrare nella propria. 
+
+Dunqua ogni processo deve chiedere il permesso per entrare in questa sezione critica.
 es:
 ```java
 while (true) {
@@ -11,39 +13,41 @@ while (true) {
 	/* sezione non critica */
 }
 ```
-Il codice di un processo che presenta il problema della selezione critica è composto così:
-- *Sezione di ingresso*: sezione dove si realizza la richiesta d'accesso alla sezione critica
-- *Sezione d'uscita*: sezione che separa la zona critica da quella non critica
+Il **codice** di un **processo** che presenta il problema della **selezione critica** è composto così:
+- ***Sezione di ingresso***: sezione dove si realizza la richiesta d'accesso alla sezione critica
+- ***Sezione d'uscita***: sezione che separa la zona critica da quella non critica
 
 Una soluzione al problema della selezione critica deve sodisfare dei requisiti precisi:
-- *Mutua esclusione*: Se un processo $$P_i$$ è in esecuzione nella sua sezione cirtica nessun altro processo può essere in esecuzione nella sua sezione critica.
-- *Progesso*: Se nessun processo è in esecuzione nella propria sezione critica la decisione di quale processo deve entrare per primo va fatta immediatamente dai processi che possono decidere, la scelta non può essere rimandata .
-- *Attesa limitata*: Se un processo ha già richiesto di entrare nella propria sezione critica esiste un numero massimo di volte che si consente ad altri processi di superarlo.
+- ***Mutua esclusione***: Se un processo $P_i$ è in esecuzione nella sua sezione critica **nessun altro** processo può essere in esecuzione nella sua sezione critica.
+- ***Progresso***: Se nessun processo è in esecuzione nella propria sezione critica la **decisione** di quale **processo** deve entrare per **primo** va effettuata immediatamente e non può essere rimandata .
+- ***Attesa limitata***: Se un processo ha già richiesto di entrare nella propria sezione critica esiste un numero massimo di volte che si consente ad altri processi di superarlo.
 
 Le due strategie principali per la gestione delle sezioni critiche sono i:
-1. kernel **con** diritto di prelazione:
+1. kernel **con** diritto di **prelazione**:
 	consente che un processo funzionante in modalità di sistema sia sottoposto a prelazione, rinviandone in tal modo l’esecuzione.
-2. kernel **senza** diritto di prelazione:
+2. kernel **senza** diritto di **prelazione**:
 	non consente di applicare la prelazione a un processo attivo in modalità di sistema: l’esecuzione di questo processo seguiterà finché lo stesso esca da tale modalità, si blocchi o ceda volontariamente il controllo della CPU.
 ---
 ## Soluzione di Peterson
-Soluzione di Peterson è limitata a due processi $$P_i$$ e $$P_j$$ che si alternano nell'eseguire la propria sezione critica.
+Soluzione di Peterson è limitata a due processi $P_i$ e $P_j$ che si alternano nell'eseguire la propria sezione critica.
+
 I processi condividono i seguenti dati:
 ```java
 int turn;
 boolean flag[2]; 
 ```
 - La variabile **turn** può essere `turn = i` oppure `turn = j` in base a chi sta eseguendo la propria sezione critica.
-- L'array **flag** indica se un processo sia *pronto* a entrare nella propria sezione critica. es. `flag[i] = true` allora $$P_i$$ è pronto ad entrare nella sezione critica.
+- L'array **flag** indica se un processo sia *pronto* a entrare nella propria sezione critica. es. `flag[i] = true` allora $P_i$ è pronto ad entrare nella sezione critica.
+
 Un esempio dell'algoritmo utilizzando la soluzione di peterson può essere questo:
 ```java
 while(true){
 	flag[i] = true;
 	turn = j;
-	while (flag[j] && turn == j){
+	while (flag[j] && turn == j);
 	/* sezione critica */
-	flag[i] = flase;
-	}
+	flag[i] = false;
+	
 	/* sezione non critica */
 }
 ```
@@ -124,16 +128,16 @@ Lo svantaggio principale è che richiede **busy waiting**, questo tipo di implem
 Gli spinlock hanno però il vantaggio di non rendere necessario nessun context switch e vengono quindi comunemente usati in sistemi multi core mentre sono un evidente problema in sistemi single core.
 /---
 ## Semafori
-Un **semaforo** $$S$$ è una variabile cui si può accedere solo tramite due operazioni atomiche, `wait` (detta `P`) e `signal` (detta `V`).
+Un **semaforo** $S$ è una variabile cui si può accedere solo tramite due operazioni atomiche, `wait` (detta `P`) e `signal` (detta `V`).
 
 Esistono principalmente 2 tipi di semafori:
 - **semafori contatore** il cui valore è un numero intero;
-- **semafori binari** il cui valore è o 0 o 1.
+- **semafori binari** il cui valore è 0 oppure 1.
 
 Quando un semaforo ha valore `0` tutte le risorse sono occupate e i processi che vogliono accedere ad esse devono aspettare fin che il semaforo non torni positivo.
 
 *Le operazioni `P` e `V` in dettaglio:*
-- `P()` $$\longrightarrow$$ decrementa il valore bloccando la risorsa (nei semafori contatore) o ne inverte il valore (nei semafori binari)
+- `P()` $\longrightarrow$ decrementa il valore bloccando la risorsa (nei semafori contatore) o ne inverte il valore (nei semafori binari)
 	```java
 	void P(S){
 		while(S <= 0){
@@ -142,7 +146,7 @@ Quando un semaforo ha valore `0` tutte le risorse sono occupate e i processi che
 		S--;
 	}
 	```
-- `V()` $$\longrightarrow$$ incrementa il valore liberando la risorsa
+- `V()` $\longrightarrow$ incrementa il valore liberando la risorsa
 	```java
 	void V(S){
 		S++;
@@ -181,6 +185,7 @@ V(semaforo *s) {
 ### Deadlock
 Siano `P1` e `P2` due processi e questo il loro codice:
 ![deadlock, image not loaded](./img/deadlock.png)
+Sará trattato piú approfonditamente nelle sezioni successive.
 
 ---
 ## Tipici problemi di sincronizzazione
@@ -214,14 +219,21 @@ while (true){
 	/* consuma l’elemento contenuto in next_consumed */
 }
 ```
-Si supponga di disporre di una certa quantità di memoria rappresentata da un buffer con n posizioni, ciascuna capace di contenere un elemento. Il semaforo mutex ga rantisce la mutua esclusione degli accessi al buffer ed è inizializzato al valore 1. I semafori vuote e piene conteggiano rispettivamente il numero di posizioni vuote e il numero di posizioni piene nel buffer. Il semaforo vuote si inizializza al valore n; il semaforo `piene` si inizializza al valore 0. È interessante notare la simmetria esistente tra il produttore e il consumatore. Il codice si può interpretare nel senso di produzione, da parte del produttore, di posizioni piene per il consumatore; oppure di produzione, da parte del consumatore, di posizioni vuote per il produttore.
+Si supponga di disporre di una certa quantità di memoria rappresentata da un buffer con n posizioni, ciascuna capace di contenere un elemento. 
+
+Il semaforo mutex garantisce la mutua esclusione degli accessi al buffer ed è inizializzato al valore 1. I semafori vuote e piene conteggiano rispettivamente il numero di posizioni vuote e il numero di posizioni piene nel buffer. Il semaforo vuote si inizializza al valore n; il semaforo `piene` si inizializza al valore 0. È interessante notare la simmetria esistente tra il produttore e il consumatore. Il codice si può interpretare nel senso di produzione, da parte del produttore, di posizioni piene per il consumatore; oppure di produzione, da parte del consumatore, di posizioni vuote per il produttore.
 
 ### Problema dei lettori-scrittori
 Si supponga che una base di dati sia da condividere tra numerosi processi concorrenti.
-Alcuni processi possono richiedere solo la lettura del contenuto della base dati, men-
-tre altri ne possono richiedere un aggiornamento, vale a dire una lettura e una scrit-
-tura. Questi due tipi di processi vengono distinti chiamando lettori quelli interessati
-alla sola lettura e scrittori gli altri. Naturalmente, se due lettori accedono nello stesso momento all’insieme di dati condiviso, non si ha alcun effetto negativo; viceversa, se uno scrittore e un altro processo (lettore o scrittore) accedono contemporaneamente alla stessa base di dati, ne può derivare il caos. Per impedire l’insorgere di difficoltà di questo tipo è necessario che gli scrittori abbiano un accesso esclusivo in fase di scrittura alla base di dati condivisa. Questo problema di sincronizzazione è conosciuto come problema dei lettori-scrittori. Da quando tale problema fu enunciato, è stato usato per verificare quasi tutte le nuove primitive di sincronizzazione. Il problema dei lettori-scrittori ha diverse varianti, che implicano tutte l’esistenza di priorità; la più semplice, cui si fa riferimento come al primo problema dei lettori-scrittori, richiede che nessun lettore attenda, a meno che uno scrittore abbia già ottenuto il permesso di usare l’insieme di dati condiviso. In altre parole, nessun lettore deve attendere che altri lettori terminino l’operazione solo perché uno scrittore attende l’accesso ai dati. Il secondo problema dei lettori-scrittori richiede che uno scrittore, una volta pronto, esegua il proprio compito di scrittura al più presto. In altre parole, se uno scrittore attende l’accesso all’insieme di dati, nessun nuovo lettore deve iniziare la lettura.
+Alcuni processi possono richiedere solo la lettura del contenuto della base dati, mentre altri ne possono richiedere un aggiornamento, vale a dire una lettura e una scrittura.
+Questi due tipi di processi vengono distinti chiamando lettori quelli interessati alla sola lettura e scrittori gli altri. 
+Naturalmente, se due lettori accedono nello stesso momento all’insieme di dati condiviso, non si ha alcun effetto negativo; viceversa, se uno scrittore e un altro processo (lettore o scrittore) accedono contemporaneamente alla stessa base di dati, ne può derivare il caos.
+
+Per impedire l’insorgere di difficoltà di questo tipo è necessario che gli scrittori abbiano un accesso esclusivo in fase di scrittura alla base di dati condivisa. Questo problema di sincronizzazione è conosciuto come problema dei lettori-scrittori. Da quando tale problema fu enunciato, è stato usato per verificare quasi tutte le nuove primitive di sincronizzazione. 
+
+Il problema dei lettori-scrittori ha diverse varianti, che implicano tutte l’esistenza di priorità; la più semplice, cui si fa riferimento come al primo problema dei lettori-scrittori, richiede che nessun lettore attenda, a meno che uno scrittore abbia già ottenuto il permesso di usare l’insieme di dati condiviso. 
+
+In altre parole, nessun lettore deve attendere che altri lettori terminino l’operazione solo perché uno scrittore attende l’accesso ai dati. Il secondo problema dei lettori-scrittori richiede che uno scrittore, una volta pronto, esegua il proprio compito di scrittura al più presto. In altre parole, se uno scrittore attende l’accesso all’insieme di dati, nessun nuovo lettore deve iniziare la lettura.
 La soluzione del primo problema e quella del secondo possono condurre a uno stato d’attesa indefinita (starvation), degli scrittori, nel primo caso; dei lettori, nel secondo.
 La soluzione del primo problema dei lettori-scrittori prevede dunque la condivisione da parte dei processi lettori delle seguenti strutture dati:
 ```c
@@ -238,7 +250,7 @@ while(true){
 }
 ```
 Il semaforo `mutex` si usa per assicurare la mutua esclusione al momento dell’aggiornamento di `read_count`. La variabile read_count contiene il numero dei processi che stanno attualmente leggendo l’insieme di dati. Il semaforo `rw_mutex` funziona come semaforo di mutua esclusione per gli scrittori e serve anche al primo o all’ultimo lettore che entra o esce dalla sezione critica. Non serve, invece, ai lettori che entrano o escono mentre altri lettori si trovano nelle rispettive sezioni critiche.
-Occorre notare che se uno scrittore si trova nella sezione critica e n lettori attendono di entrarvi, si accoda un lettore a `rw_mutex` e $$n – 1$$ lettori a mutex. Inoltre, se uno scrittore esegue `signal(rw_mutex)` si può riprendere l’esecuzione dei lettori in attesa, oppure di un singolo scrittore in attesa. La scelta è fatta dallo scheduler.
+Occorre notare che se uno scrittore si trova nella sezione critica e n lettori attendono di entrarvi, si accoda un lettore a `rw_mutex` e $n – 1$ lettori a mutex. Inoltre, se uno scrittore esegue `signal(rw_mutex)` si può riprendere l’esecuzione dei lettori in attesa, oppure di un singolo scrittore in attesa. La scelta è fatta dallo scheduler.
 
 ### Problema dei cinque filosofi (dining philosophers)
 Si considerino cinque filosofi che trascorrono la loro esistenza pensando e mangiando. I filosofi condividono un tavolo rotondo circondato da cinque sedie, una per ciascun filosofo. Al centro del tavolo si trova una zuppiera colma di riso, e la tavola è apparecchiata con cinque bacchette (chopsticks). 
